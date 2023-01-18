@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using System.Data;
+using System.Security.Policy;
 using WarehouseInv_Final_1.Models;
 
 namespace WarehouseInv_Final_1
@@ -26,13 +27,13 @@ namespace WarehouseInv_Final_1
         //    return product;
         //}
 
-        public Product AssignLocation()
-        {
-            var locationList = GetLocations();
-            var product = new Product();
-            product.Locations = locationList;
-            return product;
-        }
+        //public Product AssignLocation()
+        //{
+        //    var locationList = GetLocations();
+        //    var product = new Product();
+        //    product.Locations = locationList;
+        //    return product;
+        //}
 
         public IEnumerable<Product> GetAllProducts()
         {
@@ -44,10 +45,10 @@ namespace WarehouseInv_Final_1
             return _conn.Query<Category>("SELECT * FROM categories;");
         }
 
-        public IEnumerable<Location> GetLocations()
-        {
-            return _conn.Query<Location>("SELECT * FROM location;");
-        }
+        //public IEnumerable<Location> GetLocations()
+        //{
+        //    return _conn.Query<Location>("SELECT * FROM location;");
+        //}
 
         public Product GetProduct(int id)
         {
@@ -56,16 +57,21 @@ namespace WarehouseInv_Final_1
 
         public void InsertProduct(Product productToInsert)
         {   
-            _conn.Execute("INSERT INTO products (NAME, PRICE, CATEGORYID, UPC, LOCATION) VALUES (@name, @price, @categoryID, @upc, @location);",
-                new { name = productToInsert.Name, price = productToInsert.Price, categoryID = productToInsert.CategoryID, upc = productToInsert.UPC, location = productToInsert.Locations});
+            _conn.Execute("INSERT INTO products (NAME, PRICE, CATEGORY, UPC, QTY, ZONE, ISLE) VALUES (@name, @price, @category, @upc, @qty, @zone, @isle);",
+                new { name = productToInsert.Name, price = productToInsert.Price, category = productToInsert.Category, upc = productToInsert.UPC, qty = productToInsert.QTY, zone = productToInsert.Zone, isle = productToInsert.Isle});
         }
 
         public void UpdateProduct(Product product)
         {
-            _conn.Execute("UPDATE products SET Name = @name, Price = @price WHERE UPC = @id",
-            new { name = product.Name, price = product.Price, id = product.UPC });
+            _conn.Execute("UPDATE products SET Name = @name, QTY = @qty, Category = @category, Price = @price WHERE UPC = @id",
+            new { name = product.Name, price = product.Price, id = product.UPC, qty = product.QTY, category = product.Category});
         }
 
-       
+        public void DeleteProduct(Product product)
+        {
+            
+            _conn.Execute("DELETE FROM Products WHERE UPC = @id;", new { id = product.UPC });
+        }
+
     }
 }

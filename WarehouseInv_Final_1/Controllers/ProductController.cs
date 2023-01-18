@@ -9,15 +9,12 @@ namespace WarehouseInv_Final_1.Controllers
 {
     public class ProductController : Controller
     {
-        
-
         private readonly IProductRepository repo;
 
         public ProductController(IProductRepository repo)
         {
             this.repo = repo;
         }
-
 
         public IActionResult Index()
         {
@@ -50,10 +47,9 @@ namespace WarehouseInv_Final_1.Controllers
 
         public IActionResult InsertProduct()
         {
-            var prod = repo.AssignLocation();
+            var prod = new Product();
             return View(prod);
         }
-
 
 
         public IActionResult InsertProductToDatabase(Product productToInsert)
@@ -62,6 +58,10 @@ namespace WarehouseInv_Final_1.Controllers
             return RedirectToAction("Index");
         }
 
-
+        public IActionResult DeleteProduct(Product product)
+        {
+            repo.DeleteProduct(product);
+            return RedirectToAction("Index");
+        }
     }
 }

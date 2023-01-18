@@ -11,8 +11,11 @@
         <th>UPC</th>
         <th>Name</th>
         <th>Price</th>
-        <th>Category ID</th>
+        <th>Category</th>
         <th>QTY</th>
+        <th>Zone</th>
+        <th>Isle</th>
+
     </tr>
 
     @foreach (var product in @Model)
@@ -22,8 +25,10 @@
 
             <td>@product.Name</td>
             <td>@product.Price</td>
-            <td>@product.CategoryID</td>
+            <td>@product.Category</td>
             <td>@product.QTY</td>
+            <td>@product.Zone</td>
+            <td>@product.Isle</td>
         </tr>
     }
 

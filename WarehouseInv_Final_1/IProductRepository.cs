@@ -14,7 +14,9 @@ namespace WarehouseInv_Final_1
         //public IEnumerable<Category> GetCategories();
         public Product AssignCategory();
 
-        public Product AssignLocation();
+        //public Product AssignLocation();
+
+        public void DeleteProduct(Product product);
 
 
     }
