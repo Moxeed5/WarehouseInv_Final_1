@@ -14,5 +14,24 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+   
 }
+
+.john {
+    background-color: #808080;
+    font-size: 100px;
+    font-weight: bolder;
+    color: #000000;
+}
+
+.bg-image {
+    background-image: url("https://fwlogistics.com/wp-content/uploads/2019/09/FWL_Sept_BlogImages_1_Warehouse.jpg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}
+
+

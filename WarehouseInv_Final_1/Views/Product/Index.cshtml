@@ -1,5 +1,31 @@
 ﻿@model IEnumerable<Product>
 
+    <style>
+
+     .bg-color {
+      background-color: #808080;
+      opcaity: 1;
+      font-size: 30px;
+     }
+
+     a {
+     color: yellow;
+     }
+
+     .low-qty{
+         color: red;
+     }
+
+     
+
+
+    </style>
+
+<div class="bg-color">
+   
+<div class = "a">
+
+
 <h2>Products</h2>
 
 <div style="display: block">
@@ -26,10 +52,13 @@
             <td>@product.Name</td>
             <td>@product.Price</td>
             <td>@product.Category</td>
-            <td>@product.QTY</td>
+            <td class="@(product.QTY < 25 ? "low-qty" : "")">@product.QTY</td>
             <td>@product.Zone</td>
             <td>@product.Isle</td>
         </tr>
     }
 
 </table>
+
+</div>
+</div>

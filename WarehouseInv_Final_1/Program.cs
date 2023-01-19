@@ -1,5 +1,8 @@
+using FluentEmail.Core;
+using FluentEmail.Smtp;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Net.Mail;
 using WarehouseInv_Final_1;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,3 +41,23 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
+//static async Task Main(string[] args)
+//{
+    var sender = new SmtpSender(() => new SmtpClient(host: "localhost")
+    {
+        EnableSsl = false,
+        DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory,
+        PickupDirectoryLocation = @"C:\Demos"
+    });
+
+    Email.DefaultSender = sender;
+
+    var email = await Email
+        .From(emailAddress: "max@maxco.com")
+        .To(emailAddress: "test@test.com", name: "Sue")
+        .Subject(subject: "Thanks!")
+        .Body(body: "Thanks for buying our product.")
+        .SendAsync();
+//}
