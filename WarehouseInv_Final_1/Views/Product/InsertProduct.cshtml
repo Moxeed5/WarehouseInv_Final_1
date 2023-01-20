@@ -9,6 +9,10 @@
 
     categories.Add(3, "Games");
 
+    categories.Add(4, "Clothes");
+
+    categories.Add(5, "Video Games");
+
 
     
 
@@ -17,6 +21,21 @@
 
 <h2>Create a New Product</h2>
 
+
+
+ <style >
+    .bg-color {
+        background-color: tan;
+        opcaity: 1;
+        font-size: 30px;
+    }
+
+    a {
+        color: yellow;
+    }
+</style>
+
+<div class="bg-color">
 @using (Html.BeginForm("InsertProductToDatabase", "Product", "Post"))
 {
     @*<input asp-for="UPC" type="hidden" value="" />*@
@@ -53,9 +72,9 @@
             }
         </select>
     </div>
-
-
     
 
     <input type="submit" value="Create Product" class="btn btn-primary" />
+
 }
+</div>
