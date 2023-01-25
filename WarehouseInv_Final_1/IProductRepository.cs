@@ -18,6 +18,10 @@ namespace WarehouseInv_Final_1
 
         public void DeleteProduct(Product product);
 
+        public IEnumerable<Picklist> GetAllPickList();
+
+        public void AddToPickList(int id);
+
 
     }
 }

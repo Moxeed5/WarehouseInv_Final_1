@@ -73,5 +73,28 @@ namespace WarehouseInv_Final_1
             _conn.Execute("DELETE FROM Products WHERE UPC = @id;", new { id = product.UPC });
         }
 
+        public IEnumerable<Picklist> GetAllPickList()
+        {
+            return _conn.Query<Picklist>("SELECT * FROM picklist;");
+        }
+
+        public void AddToPickList(int id)
+        {
+            var product = GetProduct(id);
+
+            _conn.Execute("INSERT INTO picklist (NAME, PRICE, UPC, QTY, ZONE, ISLE) VALUES (@name, @price, @upc, @qty, @zone, @isle);",
+                new { name = product.Name, price = product.Price, upc = product.UPC, qty = product.QTY, zone = product.Zone, isle = product.Isle });
+        }
+
+        //public void AddToPickList(int selectedUPCs)
+        //{
+
+
+        //    var product = GetProduct(selectedUPCs);
+        //    _conn.Execute("INSERT INTO picklist (NAME, PRICE, UPC, QTY, ZONE, ISLE) VALUES (@name, @price, @upc, @qty, @zone, @isle);",
+        //        new { name = product.Name, price = product.Price, upc = product.UPC, qty = product.QTY, zone = product.Zone, isle = product.Isle });
+
+        //}
+
     }
 }

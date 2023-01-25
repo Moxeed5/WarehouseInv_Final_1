@@ -1,76 +1,111 @@
 ﻿@model IEnumerable<Product>
-
-    <style>
-
-     .bg-color {
-      background-color: #808080;
-      opcaity: 1;
-      font-size: 30px;
-     }
-
-     a {
-     color: yellow;
-     }
-
-     .low-qty{
-         color: red;
-     }
-
-     
+@inject IProductRepository _repo
 
 
-    </style>
-
-<div class="bg-color">
-   
-<div class = "a">
-
-
-<h2>Products</h2>
-
-<div style="display: block">
-    <a href="/Product/InsertProduct/">Create a New Product</a>
-</div>
-
-      
-
-<table class="table">
-    <tr>
-
-        <th>Pick List</th>
-        <th>UPC</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Category</th>
-        <th>QTY</th>
-        <th>Zone</th>
-        <th>Isle</th>
-        <th>Add to PL</th>
-
-    </tr>
-
-    @foreach (var product in @Model)
-    {
-        <tr>
-            <td><input type="checkbox" name="selectedProducts" value="@product.UPC" /></td>
-            <td><a href=/Product/ViewProduct/@product.UPC>@product.UPC</a></td>
-
-            
-
-            <td>@product.Name</td>
-            <td>@product.Price</td>
-            <td>@product.Category</td>
-            <td class="@(product.QTY < 25 ? "low-qty" : "")">@product.QTY</td>
-            <td>@product.Zone</td>
-            <td>@product.Isle</td>
-             <td><input type="number" name="quantity-@product.UPC" min="1" max="@product.QTY" value="0" /></td>
-        </tr>
+<style>
+    .bg-color {
+        background-color: #808080;
+        opcaity: 1;
+        font-size: 30px;
     }
 
-            <input type="submit" value="Add to Pick List" />
+    a {
+        color: yellow;
+    }
+
+    .low-qty {
+        color: red;
+    }
+</style>
+
+<div class="bg-color">
+
+    <div class="a">
+
+        <h2>Products</h2>
+
+        <div style="display: block">
+            <a href="/Product/InsertProduct/">Create a New Product</a>
+        </div>
+
+        @*<div style="display: block">
+            <a href="/Product/IndexPick/">View Pick List</a>
+        </div>*@
+
+       
+
+        <table class="table">
+            <tr>
+
+                
+                <th>UPC</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>QTY</th>
+                <th>Zone</th>
+                <th>Isle</th>
+               
+
+            </tr>
+
+           @* @{
+                int index = 0;
+                void AddToPickList(Product product)
+                {
+                    _repo.InsertProduct(product);
+                }
+
+            }*@
+
+          
 
 
-</table>
+            @foreach (var product in @Model)
+            {
+                
+                <tr>
+                    @*<td>
 
+                        <form> <button type="submit" formaction= "">Add</button></form>
+
+                    </td>*@
+                    <td><a href=/Product/ViewProduct/@product.UPC>@product.UPC</a></td>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.Category</td>
+                    <td class="@(product.QTY < 25 ? "low-qty" : "")">@product.QTY</td>
+                    <td>@product.Zone</td>
+                    <td>@product.Isle</td>
+                    
+                </tr>
+            }
+        </table>
+
+    </div>
 </div>
-</div>
+
+@*@using (Html.BeginForm("AddToPickList", "Product", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <th>Select</th>
+            <th>UPC</th>
+            <th>Name</th>
+        </tr>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" name="selectedUPCs" value="@product.UPC" />
+                </td>
+                <td>@product.UPC</td>
+                <td>@product.Name</td>
+
+            </tr>
+        }
+    </table>
+    <input type="submit" value="Add to Pick List" />*@
+}
+
+

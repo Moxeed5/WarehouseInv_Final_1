@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Picklist>
+
+<h2>Picklist</h2>
+<table class="table">
+    <tr>
+        <th>OrderID</th>
+        <th>Name</th>
+        <th>UPC</th>
+        <th>Zone</th>
+        <th>Isle</th>
+        
+    </tr>
+
+    @foreach (var picklist in @Model)
+    {
+        <tr>
+            <td>@picklist.OrderID</td>
+            <td>@picklist.Name</td>
+            <td>@picklist.UPC</td>
+            <td>@picklist.Zone</td>
+            <td>@picklist.Isle</td>
+        </tr>
+    }
+
+</table>

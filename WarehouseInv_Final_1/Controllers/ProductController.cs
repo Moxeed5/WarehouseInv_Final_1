@@ -63,5 +63,30 @@ namespace WarehouseInv_Final_1.Controllers
             repo.DeleteProduct(product);
             return RedirectToAction("Index");
         }
+
+        public IActionResult IndexPick()
+        {
+            var picklist = repo.GetAllPickList();
+            return View(picklist);
+        }
+
+        //[HttpPost]
+        //public ActionResult AddToPickList(int id)
+        //{
+        //    // Call the AddToPickList method for each selected UPC
+           
+        //        AddToPickList(id);
+            
+        //    return RedirectToAction("IndexPick");
+        //}
+
+
+
+
+
+
+
     }
+
+
 }
