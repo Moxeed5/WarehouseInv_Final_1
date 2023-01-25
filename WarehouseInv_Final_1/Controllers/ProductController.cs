@@ -70,21 +70,6 @@ namespace WarehouseInv_Final_1.Controllers
             return View(picklist);
         }
 
-        //[HttpPost]
-        //public ActionResult AddToPickList(int id)
-        //{
-        //    // Call the AddToPickList method for each selected UPC
-           
-        //        AddToPickList(id);
-            
-        //    return RedirectToAction("IndexPick");
-        //}
-
-
-
-
-
-
 
     }
 
