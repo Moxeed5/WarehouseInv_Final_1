@@ -25,12 +25,17 @@
 
  <style >
     .bg-color {
-        background-color: tan;
+        background-color: grey;
         opcaity: 1;
         font-size: 30px;
+        
     }
 
     a {
+        color: yellow;
+    }
+
+    .yellow-text{
         color: yellow;
     }
 </style>
@@ -42,14 +47,14 @@
 
     @*<label asp-for="UPC" class="control-label">UPC</label>
     <input type="number" name="UPC" class="form-control" value="" />*@
-
+        <div class="yellow-text">
     <label asp-for="UPC" class="control-label"></label>
     <input asp-validation-for="UPC" data-val="true" data-val-required="The UPC field is required." type="number" name="UPC" class="form-control" value="" required />
 
-
+        
     <label asp-for="QTY" class="control-label">QTY</label>
-    <input type="number" name="QTY" class="form-control" value="" required/>
-
+        <input type="number" name="QTY" class="form-control" value="" required />
+        
 
     <label asp-for="Name" class="control-label">Name</label>
     <input type="text" name="Name" class="form-control" value="" required/>
@@ -62,9 +67,10 @@
 
     <label asp-for="Isle" class="control-label">Isle</label>
     <input type="number" name="Isle" class="form-control" required/>
-
+        
     <div class="form-group">
-        <label for="">Select a Category</label>
+                <label for="">Select a Category</label>
+            </div>
         <select class="form-control" name="Category" value="">
             @foreach (var cat in categories)
             {

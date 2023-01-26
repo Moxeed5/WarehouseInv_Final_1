@@ -22,7 +22,7 @@
 
     <div class="a">
 
-        <h2>Products</h2>
+        <h2 style="text-align: center;">Products</h2>
 
         <div style="display: block">
             <a href="/Product/InsertProduct/">Create a New Product</a>
@@ -49,14 +49,7 @@
 
             </tr>
 
-           @* @{
-                int index = 0;
-                void AddToPickList(Product product)
-                {
-                    _repo.InsertProduct(product);
-                }
-
-            }*@
+          
 
           
 
@@ -65,11 +58,7 @@
             {
                 
                 <tr>
-                    @*<td>
-
-                        <form> <button type="submit" formaction= "">Add</button></form>
-
-                    </td>*@
+                    
                     <td><a href=/Product/ViewProduct/@product.UPC>@product.UPC</a></td>
                     <td>@product.Name</td>
                     <td>@product.Price</td>
@@ -85,27 +74,6 @@
     </div>
 </div>
 
-@*@using (Html.BeginForm("AddToPickList", "Product", FormMethod.Post))
-{
-    <table>
-        <tr>
-            <th>Select</th>
-            <th>UPC</th>
-            <th>Name</th>
-        </tr>
-        @foreach (var product in Model)
-        {
-            <tr>
-                <td>
-                    <input type="checkbox" name="selectedUPCs" value="@product.UPC" />
-                </td>
-                <td>@product.UPC</td>
-                <td>@product.Name</td>
 
-            </tr>
-        }
-    </table>
-    <input type="submit" value="Add to Pick List" />*@
-}
 
 

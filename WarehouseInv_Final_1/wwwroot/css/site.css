@@ -36,6 +36,14 @@ body {
     filter: sepia(6);
 }
 
+footer a {
+    color: blue;
+}
+
+.bg-green {
+    background-color: lightgreen;
+}
+
 
 
 

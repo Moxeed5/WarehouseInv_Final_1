@@ -19,12 +19,15 @@
 
 <style>
     .bg-color {
-        background-color: tan;
+        background-color: grey;
         opcaity: 1;
         font-size: 30px;
     }
 
     a {
+        color: yellow;
+    }
+    .yellow-text{
         color: yellow;
     }
 </style>
@@ -34,7 +37,7 @@
 <div class="bg-color">
 @using (Html.BeginForm("UpdateProductToDatabase", "Product", "Post"))
 {
-    @*<input asp-for="UPC" type="hidden" value="@Model.UPC" />*@
+    <div class="yellow-text">
 
     <label asp-for="UPC" class="control-label">UPC</label>
     <input type="number" name="UPC" class="form-control" value="@Model.UPC" required/>
@@ -50,6 +53,7 @@
 
     <div class="form-group">
         <label for="">Select a Category</label>
+        </div>
         <select class="form-control" name="Category" value="">
             @foreach (var cat in categories)
             {
